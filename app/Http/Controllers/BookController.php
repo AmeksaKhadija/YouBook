@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 
 class BookController extends Controller
 {
@@ -11,7 +12,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books = Book::all();
+        return view('home',['books'=>$books]);
     }
 
     /**
@@ -27,7 +29,15 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titreLivre'=>'required',
+            'prixLivre'=>'required',
+        ]);
+        $books = new Book();
+        $books->title = $request->titreLivre;
+        $books->prix = $request->prixLivre;
+        $books->save();
+        return redirect('/books');
     }
 
     /**
@@ -57,8 +67,9 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return redirect()->route('books.index');
     }
 }

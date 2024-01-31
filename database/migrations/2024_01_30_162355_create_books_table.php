@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->integer('prix');
-            $table->dateTime('date_res');
-            $table->dateTime('date_rec');
             $table->timestamps();
         });
     }
