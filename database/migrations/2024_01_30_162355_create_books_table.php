@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->integer('prix');
+            $table->boolean('isDisponible')->nullable()->default(false);
+
             $table->timestamps();
         });
     }

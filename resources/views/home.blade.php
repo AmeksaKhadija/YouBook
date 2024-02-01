@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>home page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -35,9 +35,7 @@
         </div>
     </nav>
     <section class="my-4 container">
-        <button class="btn btn-secondary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter
-            Book</button>
-
+        <button class="btn btn-secondary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter Book</button>
         <table class="table">
             <thead>
                 <tr>
@@ -55,10 +53,9 @@
                             <form action="{{ route('books.destroy', $book->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
                             </form>
-                             <button class="btn btn-primary">Modifier</button>
-
+                            <a href="{{route('books.edit',['book'=>$book->id])}}" class="btn btn-info">edit</a>
                         </td>
                     </tr>
                 @endforeach

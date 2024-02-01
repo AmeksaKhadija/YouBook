@@ -20,3 +20,6 @@ Route::get('/', function () {
 });
 
 Route::resource('books', BookController::class);
+
+Route::get('AllBooks', [BookController::class,'AllBooks']);
+Route::get('/reserver/{id}', [BookController::class,'reserver']);

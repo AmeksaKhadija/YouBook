@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Reservation;
+use Illuminate\Support\Facades\DB;
+
 
 class BookController extends Controller
 {
@@ -53,7 +56,8 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $books = Book::findOrFail($id);
+        return view("edit", ["book" => $books]);
     }
 
     /**
@@ -61,7 +65,12 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $books = Book::findOrFail($id);
+        $books->title = $request->input("title");
+        $books->prix = $request->input("prix");
+        $books->save();
+        session()->flash('status', 'book modifier avec successe');
+        return redirect()->route("books.index");
     }
 
     /**
@@ -71,5 +80,21 @@ class BookController extends Controller
     {
         $book->delete();
         return redirect()->route('books.index');
+    }
+
+    public function AllBooks()
+    {
+        $books = DB::select('select * from books where isDisponible=0');
+        return view('allBooks',compact('books'));
+    }
+
+    public function reserver($id){
+        $book = new Reservation();
+        $book->book_id=$id;
+        $book->user_id	=1;
+        $book->save();
+        return redirect('/AllBooks');
+
+
     }
 }
