@@ -42,7 +42,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{$book->title}}</h5>
                 <p class="card-text">{{$book->prix}}</p>
-                <a href="/reserver/{{$book->id}}" class="btn btn-primary">Résirver</a>
+                <a href="/reserver/{{$book->id}}" class="btn btn-primary">Reserver</a>
             </div>
         </div>
         @endforeach

@@ -84,7 +84,7 @@ class BookController extends Controller
 
     public function AllBooks()
     {
-        $books = DB::select('select * from books where isDisponible=0');
+        $books = DB::table('books')->where('isDisponible','=','0')  ->get();
         return view('allBooks',compact('books'));
     }
 
