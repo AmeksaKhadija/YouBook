@@ -24,13 +24,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="AllBooks">Home</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div class="d-flex justify-content-center align-items-center">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success me-3" type="submit">Search</button>
+                    </form>
+                </div>
+    
+                <div class="d-flex">
+                    <a href="signup" class="btn btn-outline-success me-3" role="button">Sign Up</a>
+                    <a href="signin" class="btn btn-outline-success" role="button">Sign In</a>
+                </div>
+                
             </div>
         </div>
     </nav>

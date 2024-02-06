@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,9 @@ Route::get('/', function () {
 Route::resource('books', BookController::class);
 
 Route::get('AllBooks', [BookController::class,'AllBooks']);
+
 Route::get('/reserver/{id}', [BookController::class,'reserver']);
+
+Route::get('/signup',[AuthController::class,'signup']);
+
+Route::get('/signin',[AuthController::class,'signin']);
