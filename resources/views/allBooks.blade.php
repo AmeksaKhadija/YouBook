@@ -32,11 +32,6 @@
                         <button class="btn btn-outline-success me-3" type="submit">Search</button>
                     </form>
                 </div>
-    
-                <div class="d-flex">
-                    <a href="signup" class="btn btn-outline-success me-3" role="button">Sign Up</a>
-                    <a href="signin" class="btn btn-outline-success" role="button">Sign In</a>
-                </div>
                 
             </div>
         </div>

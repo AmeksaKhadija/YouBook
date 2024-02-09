@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="AllBooks">Home</a>
                     </li>
                 </ul>
                 <div class="d-flex justify-content-center align-items-center">
@@ -33,7 +33,7 @@
                 </div>
     
                 <div class="d-flex">
-                    <a href="singup" class="btn btn-outline-success me-3" role="button">Sign Up</a>
+                    <a href="signup" class="btn btn-outline-success me-3" role="button">Sign Up</a>
                     <a href="signin" class="btn btn-outline-success" role="button">Sign In</a>
                 </div>
                 
@@ -48,7 +48,8 @@
                     <div class="card">
                         <h2 class="card-title text-center mt-3">Welcome</h2>
                         <div class="card-body py-md-4">
-                            <form method="post">
+                            <form method="post" action="{{ route('signup.post') }}">
+                                @csrf
                                 <div class="mb-3">
                                     <input type="text" class="form-control" id="name" name="name"
                                         placeholder="Name" required>
@@ -62,8 +63,8 @@
                                         placeholder="Password" required>
                                 </div>
                                 <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <a href="signin.php" class="text-decoration-none">Login</a>
-                                    <button type="submit" class="btn btn-primary">Create Account</button>
+                                    <a href="signin" class="text-decoration-none">Login</a>
+                                    <button type="submit" name="submit" class="btn btn-primary">Create Account</button>
                                 </div>
                             </form>
                         </div>

@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="AllBooks">Home</a>
                     </li>
                 </ul>
                 <div class="d-flex justify-content-center align-items-center">
@@ -43,18 +43,19 @@
                 <div class="card">
                     <h2 class="card-title text-center mt-3">Sign In</h2>
                     <div class="card-body py-md-4">
-                        <form method="post">
+                        <form method="post" action="/signinpost">
+                            @csrf
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                                <input type="text" class="form-control" id="username" name="email" placeholder="email" required>
                             </div>
                             <div class="mb-3">
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                             </div>
                             <div class="text-center mt-4">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Login</button>
                             </div>
                         </form>
-                        <p class="text-center mt-3">Don't have an account? <a href="signup.php" class="link-primary">Sign Up</a></p>
+                        <p class="text-center mt-3">Don't have an account? <a href="signup" class="link-primary">Sign Up</a></p>
                     </div>
                 </div>
             </div>

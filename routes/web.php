@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::get('AllBooks', [BookController::class,'AllBooks']);
 
 Route::get('/reserver/{id}', [BookController::class,'reserver']);
 
-Route::get('/signup',[AuthController::class,'signup']);
+Route::get('/signup', [AuthController::class, 'showsignup'])->name('signup');
 
-Route::get('/signin',[AuthController::class,'signin']);
+Route::post('/signup', [AuthController::class, 'signup'])->name('signup.post');
+
+Route::get('/signin', [AuthController::class, 'showsignin'])->name('signin');
+
+Route::post('/signinpost', [AuthController::class, 'signin']);
