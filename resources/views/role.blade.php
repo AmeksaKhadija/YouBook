@@ -42,55 +42,51 @@
                         <button class="btn btn-outline-success me-3" type="submit">Search</button>
                     </form>
                 </div>
+    
+                
                 
             </div>
         </div>
     </nav>
     <section class="my-4 container">
-        <button class="btn btn-secondary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter Book</button>
+        <button class="btn btn-secondary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter Role</button>
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Prix</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($books as $book)
+                @foreach ($roles as $role)
                     <tr>
-                        <td>{{ $book->title }}</td>
-                        <td>{{ $book->prix }}</td>
+                        <td>{{ $role->name }}</td>
                         <td style="display: flex;gap:20px">
-                            <form action="{{ route('books.destroy', $book->id) }}" method="post">
+                            <form action="{{ route('role.destroy', $role->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Supprimer</button>
                             </form>
-                            <a href="{{route('books.edit',['book'=>$book->id])}}" class="btn btn-info">edit</a>
+                            <a href="{{route('role.edit',['role'=>$role->id])}}" class="btn btn-info">edit</a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <form action="{{ route('books.store') }} " method="POST">
+            <form action="{{ route('role.store') }} " method="POST">
                 @csrf
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter Catégorie</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter Role</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="titreLivre" class="form-label">Titre du livre :</label>
-                                <input type="text" class="form-control" id="titreLivre" name="titreLivre" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="prixLivre" class="form-label">Prix du livre :</label>
-                                <input type="text" class="form-control" id="prixLivre" name="prixLivre" required>
+                                <label for="titreLivre" class="form-label">Role name :</label>
+                                <input type="text" class="form-control" id="titreLivre" name="name" required>
                             </div>
                         </div>
                         <div class="modal-footer">

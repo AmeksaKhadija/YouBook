@@ -94,8 +94,5 @@ class BookController extends Controller
         $book->user_id	=1;
         $book->save();
         return redirect('/AllBooks');
-
-        
-
     }
 }

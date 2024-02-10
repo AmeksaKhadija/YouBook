@@ -5,6 +5,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +38,9 @@ Route::post('/signup', [AuthController::class, 'signup'])->name('signup.post');
 Route::get('/signin', [AuthController::class, 'showsignin'])->name('signin');
 
 Route::post('/signinpost', [AuthController::class, 'signin']);
+
+// Route::resource('reservation', ReservationController::class);
+
+Route::resource('role', RoleController::class);
+
+Route::resource('user', UserController::class);
