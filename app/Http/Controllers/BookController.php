@@ -15,7 +15,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = Book::where('isDisponible', '0')->get();
         return view('home',['books'=>$books]);
     }
 
@@ -89,10 +89,18 @@ class BookController extends Controller
     }
 
     public function reserver($id){
-        $book = new Reservation();
-        $book->book_id=$id;
-        $book->user_id	=1;
-        $book->save();
-        return redirect('/AllBooks');
+        $book = Book::find($id);
+        $book->isDisponible = 1; 
+        $book->save(); 
+    
+        return redirect('/AllBooks')->with('success', 'Le livre a été réservé avec succès.');
+    }
+
+    public function retirer($id){
+        $book = Book::find($id);
+        $book->isDisponible = 0; 
+        $book->save(); 
+    
+        return redirect('/AllBooks')->with('success', 'Le livre a été retirer avec succès.');
     }
 }

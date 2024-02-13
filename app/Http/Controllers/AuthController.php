@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\UserRole;
 
 use App\Models\User;
 
@@ -23,6 +24,11 @@ class AuthController extends Controller
     $user->email = $request->input('email');
     $user->password = bcrypt($request->input('password'));
     $user->save();
+    $user_id = $user->id;
+    $userRole = new UserRole();
+    $userRole->user_id = $user_id;
+    $userRole->role_id=1;
+    $userRole->save();
 
     return redirect()->route('signin')->with('success', 'Votre compte a été créé avec succès. Connectez-vous maintenant.');
 }
@@ -45,8 +51,17 @@ class AuthController extends Controller
         if (!$user || !Hash::check($request->password, $user->password)) {
             return back()->with('error', 'Invalid email or password');
         }
-        session(['user_id' => $user->id]);
-        return redirect('AllBooks');
+       
+        $roles = $user->roles()->pluck('name')->toArray(); 
+            session(['user_id' => $user->id, 'user_roles' => $roles]);
+
+
+            if (in_array('bibliothécaire', $roles)) {
+                return redirect('books');
+            } else {
+                return redirect('AllBooks');
+            }
+       
     }
 
     public function showsignin()

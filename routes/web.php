@@ -7,7 +7,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\ReservationController;
 
 
 /*
@@ -39,8 +39,10 @@ Route::get('/signin', [AuthController::class, 'showsignin'])->name('signin');
 
 Route::post('/signinpost', [AuthController::class, 'signin']);
 
-// Route::resource('reservation', ReservationController::class);
+Route::resource('reservation', ReservationController::class);
 
 Route::resource('role', RoleController::class);
 
 Route::resource('user', UserController::class);
+
+Route::get('/retirer/{id}', [BookController::class,'retirer']);

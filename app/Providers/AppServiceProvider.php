@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        Schema::defaultStringLength(191);
+        
     }
 
     /**
@@ -22,5 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+
+        Schema::defaultStringLength(191);
     }
 }
